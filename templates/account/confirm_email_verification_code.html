@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load allauth account %}
+{% load static %}
+{% block head_title %}
+    {% translate "Email Verification" %}
+{% endblock head_title %}
+{% block title %}
+    {% translate "Enter Email Verification Code" %}
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="verify-card">
+
+        <h1>Email Verification</h1>
+
+        <h3>Enter Email Verification Code</h3>
+
+        <p>We've sent a verification code to <strong>{{ email }}</strong>. The code expires shortly, so please enter it soon.</p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_div }}
+
+            <button type="submit">
+                Verify Email
+            </button>
+        </form>
+
+    </div>
+
+
+</main>
+
+{% endblock %}
+{% block recipient %}<a href="mailto:{{ email }}">{{ email }}</a>{% endblock %}
+{% block action_url %}
+    {% url 'account_email_verification_sent' %}
+{% endblock %}
+{% block extra_tags %}email,verification{% endblock %}
+{% block change_title %}
+    {% translate "Use a different email address" %}
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+<div class="chat-container" style="padding: 25px;">
+
+    
+
+    <div id="chat-heading">
+        <h1>Chat with <a href="{% url 'core:profile' targetUser.username %}" target="_blank">{{ targetUser.username }}</a>  </h1>
+    </div>
+    
+    <div id="chatLog">
+
+        {% if chats %}
+            {% for chat in chats %}
+                {% if chat.sender == request.user %}
+                <div class="message my-message">
+                     <p> {{ chat.content }} </p>
+
+                </div>
+                {% else %}
+                <div class="message received-message">
+                    <p> {{ chat.content }} </p>
+                </div>
+                {% endif %}
+               
+            {% endfor %}
+
+        {% endif %}
+        
+            
+
+
+    </div> <br>
+    <input type="text" id="chat-message" placeholder="Type a message..." autofocus>
+    <button type="submit" id="chat-message-submit" class="btn btn-primary">Send</button>
+
+
+</div>
+
+<script>
+    let message;
+    let messageElement;
+    let actualData;
+    let currentUserId = "{{ request.user.id }}";
+     console.log("user is", currentUserId);
+    let chatLog = document.getElementById('chatLog');
+    chatLog.scrollTop = chatLog.scrollHeight;
+    let send = document.getElementById('chat-message-submit');
+    let roomName = "{{ roomName }}";
+
+    console.log("room name", roomName);
+
+    console.log("type of room name", typeof(roomName));
+
+    let ws = new WebSocket("ws://" + window.location.host + "/ws/cc/" + roomName + "/")
+
+    ws.onopen = function(event) {
+        console.log("websocket opened", event);
+    }
+
+    ws.onmessage = function(event) {
+        console.log("message is---", event['data'])
+        console.log("Type of message is---", typeof(event['data']))
+
+        let data = event['data'];
+        parsedData = JSON.parse(data);
+        console.log("parsed data", parsedData);
+        console.log("parsed data 2", parsedData.message);
+        let parData = parsedData.message;
+        console.log("Type of parsed data 2", typeof(parsedData.message));
+        actualData = JSON.parse(parData);
+
+        console.log("actualData variable---", actualData);
+        console.log("type of actualData variable---", typeof(actualData));
+        console.log("actualData variable message ---", actualData.msg);
+
+        let realData = actualData.msg;
+
+        messageElement = document.createElement('div');
+
+        messageElement.classList.add('message');
+
+        console.log("real data sender--", parsedData.sender);
+        console.log("actual user", currentUserId);
+
+        if(parsedData.sender == currentUserId) {
+            messageElement.classList.add('my-message');
+        }
+        else {
+            messageElement.classList.add('received-message');
+        }
+
+        
+
+        messageElement.textContent = realData;
+
+        chatLog.appendChild(messageElement);
+    
+
+    }
+
+    ws.onclose = function(event) {
+        console.log("closed");
+    }
+
+    send.addEventListener('click', (event) => {
+        message = document.getElementById('chat-message').value;
+        ws.send(JSON.stringify({
+            'msg': message
+        }));
+        document.getElementById('chat-message').value = "";
+
+    })
+
+</script>
+{% endblock %}
+

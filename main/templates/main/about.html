@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<main class="about-page-main">
+    <div class="about-main-content">
+        <h1>About VibeMatch</h1>
+        <div class="about-img-container">
+            <img src="{% static 'main/images/about1.jpg' %}" alt="about-page-image" />
+        </div>
+        <div class="about-hero-section">
+            <h2>❤️ Finding Meaningful Connections Through Technology</h2>
+            <p>At VibeMatch, we believe that finding the right person should be based on compatibility, shared interests, and genuine connections—not just endless swiping.
+                Our mission is to use modern technology and intelligent matching to help people discover friendships, meaningful relationships, and lifelong partners in a safer and more personalized way.
+            </p>
+        </div>
+
+        <div class="about-section-2">
+            <h3>🤝 Our Mission</h3>
+            <p>Our goal is simple:</p>
+            <p><i>"To connect people who truly complement each other"</i>.</p>
+            <p>Instead of relying only on appearance, VibeMatch considers information such as your interests, preferences, age, lifestyle, relationship goals, and other compatibility factors to recommend people who are more likely to be a good match.</p>
+        </div>
+
+        <div class="about-section-3">
+            <h3>🧠 Smart Matching</h3>
+            <p>Every member creates a profile describing themselves and what they are looking for in a partner.</p>
+            <p>Our matching system analyzes this information to recommend compatible profiles, helping you spend less time searching and more time building meaningful connections.</p>
+            <p>As VibeMatch grows, we aim to continuously improve our recommendation system using machine learning to provide even more accurate and personalized matches.</p>
+        </div>
+
+        <div class="about-section-4">
+            <h3>🔒 Privacy & Safety</h3>
+            <p><b>Your privacy is important to us.</b></p>
+            <p>We work to provide a safe environment by:</p>
+            <ul>
+                <li>Protecting your personal information.</li>
+                <li>Giving you control over your profile visibility.</li>
+                <li>Detecting suspicious activity and fake accounts.</li>
+                <li>Encouraging respectful interactions between members.</li>
+            </ul>
+            <p>A trusted community starts with trust and transparency.</p>
+        </div>
+        <div class="about-section-5">
+            <h3>🌍 Built for Everyone</h3>
+            <p>Whether you're looking for:</p>
+            <ul>
+                <li>❤️ A serious relationship</li>
+                <li>💬 New friends</li>
+                <li>🌟 Someone who shares your interests</li>
+                <li>💍 A lifelong partner</li>
+            </ul>
+            <p><b>VibeMatch</b>welcomes people from different backgrounds, cultures, and locations who are looking to build genuine connections.</p>
+        </div>
+        <div class="about-section-6">
+            <h3>🚀 Our Vision</h3>
+            <p>We envision a platform where technology helps people form authentic relationships rather than simply increasing the number of conversations.</p>
+            <p>Our long-term goal is to make VibeMatch a trusted community where meaningful connections begin and lasting relationships grow.</p>
+        </div>
+        <div class="about-section-7">
+            <h3>❤️ Join the Journey</h3>
+            <p>Create your profile, discover compatible people, and let VibeMatch help you take the first step toward your next meaningful connection.</p>
+            <p><b>Your perfect match may be just one conversation away.</b></p>
+            <a href="{% url 'main:userinfo' %}">
+                <button class="btn btn-primary">Join VibeMatch</button>
+            </a>
+           
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<main>
+    <div class="contact-page-main-div">
+        <h1>Contact Us.</h1>
+
+        <form method="post" action="">
+
+            {% csrf_token %}
+
+            <div class="contact-form-div">
+                <div class="form-group full_name-field">
+                    <label for="{{ form.full_name.id_for_label }}">Full Name: </label>
+                        {{ form.Full_Name }}
+                </div>
+
+                <div class="form-group email-field">
+                    <label for="{{ form.email.id_for_label }}">Email id: </label>
+                        {{ form.email }}
+                </div>
+
+                <div class="form-group message-field">
+                    <label for="{{ form.message.id_for_label }}">Message: </label>
+                        {{ form.message }}
+                </div>
+            </div>
+
+            <button class="btn btn-primary">Send</button>
+
+        </form>
+
+        
+    </div>
+</main>
+
+
+{% endblock %}

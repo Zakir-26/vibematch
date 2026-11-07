@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<main class="info-page-main">
+    <div class="more-about-user">
+        <div class="more-about-user-heading">
+            <h2>More About Yourself</h2>
+        </div>
+        <div class="more-about-user-form">
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="userinfo-form">
+
+                    <div class="form-group name-field">
+                        <label for="{{ form.name.id_for_label }}">Name: </label>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="form-group age-field">
+                        <label for="{{ form.age.id_for_label }}">Age: </label>
+                        {{ form.age }}
+                    </div>
+
+                    <div class="form-group gender-field">
+                        <label for="{{ form.gender.id_for_label }}">Gender: </label>
+                        {{ form.gender }}
+                    </div>
+
+                    <div class="form-group city-field">
+                        <label for="{{ form.city.id_for_label }}">City: </label>
+                        {{ form.city }}
+                    </div>
+
+                    <div class="form-group country-field">
+                        <label for="{{ form.country.id_for_label }}">Country: </label>
+                        {{ form.country }}
+                    </div>
+
+                    <div class="form-group profession-field">
+                        <label for="{{ form.profession.id_for_label }}">Profession: </label>
+                        {{ form.profession }}
+                    </div>
+
+                    <div class="form-group qualification-field">
+                        <label for="{{ form.qualification.id_for_label }}">Qualification: </label>
+                        {{ form.qualification }}
+                    </div>
+
+                    <div class="form-group personality-field">
+                        <label for="{{ form.personality.id_for_label }}">Personality: </label>
+                        {{ form.personality }}
+                    </div>
+
+                    <div class="form-group workout-field">
+                        <label for="{{ form.workout.id_for_label }}">Workout: </label>
+                        {{ form.workout }}
+                    </div>
+
+                    <div class="form-group height-field">
+                        <label for="{{ form.height.id_for_label }}">Height in cm: </label>
+                        {{ form.height }}
+                    </div>
+
+                    <div class="form-group smoking-field">
+                        <label for="{{ form.smoking.id_for_label }}">Smoking: </label>
+                        {{ form.smoking }}
+                    </div>
+
+                    <div class="form-group religion-field">
+                        <label for="{{ form.religion.id_for_label }}">Religion: </label>
+                        {{ form.religion }}
+                    </div>
+
+                    <div class="form-group looking_for-field">
+                        <label for="{{ form.looking_for.id_for_label }}">Looking For: </label>
+                        {{ form.looking_for }}
+                    </div>
+
+                    <div class="form-group purpose-field">
+                        <label for="{{ form.purpose.id_for_label }}">Purpose: </label>
+                        {{ form.purpose }}
+                    </div>
+
+                    <div class="form-group min_age-field">
+                        <label for="{{ form.min_age.id_for_label }}">Paetner's Min Age: </label>
+                        {{ form.min_age }}
+                    </div>
+
+                    <div class="form-group max_age-field">
+                        <label for="{{ form.max_age.id_for_label }}">Partner's Max Age: </label>
+                        {{ form.max_age }}
+                    </div>
+
+                    <div class="form-group city-field">
+                        <label for="{{ form.city.id_for_label }}">Partner's City: </label>
+                        {{ form.partner_city }}
+                    </div>
+
+                    <div class="form-group socialID-field">
+                        <label for="{{ form.socialID.id_for_label }}">Paste your Insta/X/Facebook id url (Optional): </label>
+                        {{ form.socialID }}
+                    </div>
+
+                    <div class="form-group bio-field">
+                        <label for="{{ form.bio.id_for_label }}">Short Bio about Yourself (Optional): </label>
+                        {{ form.bio }}
+                    </div>
+
+                    <div class="form-group profile_picture-field">
+                        <label for="{{ form.profile_picture.id_for_label }}">Profile Picture (optional): </label>
+                        {{ form.profile_picture }}
+                    </div>
+
+
+                </div>
+
+                <div class="userinfo-button">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+
+                
+            </form>
+            
+        </div>
+        
+    </div>
+</main>
+{% endblock %}

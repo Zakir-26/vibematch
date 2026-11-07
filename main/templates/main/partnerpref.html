@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<main class="partnerpref-page-main">
+
+    <div class="partnerpref-div">
+        <div class="partnerpref-heading">
+            <h2>Describe Your Ideal Match</h2>
+        </div>
+        <div class="partnerpref-form">
+            <form method="post" action="">
+
+                {% csrf_token %}
+
+                <div class="partnerinfo-form">
+
+                    <div class="form-group looking_for-field">
+                        <label for="{{ form.looking_for.id_for_label }}">Seeking: </label>
+                        {{ form.looking_for }}
+                    </div>
+
+                    <div class="form-group min_age-field">
+                        <label for="{{ form.min_age.id_for_label }}">Min Age: </label>
+                        {{ form.min_age }}
+                    </div>
+
+                    <div class="form-group max_age-field">
+                        <label for="{{ form.max_age.id_for_label }}">Max Age: </label>
+                        {{ form.max_age }}
+                    </div>
+
+                    <div class="form-group city-field">
+                        <label for="{{ form.city.id_for_label }}">City: </label>
+                        {{ form.city }}
+                    </div>
+
+                    <div class="form-group relationship_goal-field">
+                        <label for="{{ form.relationship_goal.id_for_label }}">Relationship Goal: </label>
+                        {{ form.relationship_goal }}
+                    </div>
+
+                    <div class="form-group preffered_religion-field">
+                        <label for="{{ form.preffered_religion.id_for_label }}">Preffered Religion: </label>
+                        {{ form.preffered_religion }}
+                    </div>
+
+                    <div class="form-group preffered_profession-field">
+                        <label for="{{ form.preffered_profession.id_for_label }}">Preffered Profession: </label>
+                        {{ form.preffered_profession }}
+                    </div>
+
+                    <div class="form-group requirements-field">
+                        <label for="{{ form.requirements.id_for_label }}">Describe your Ideal Partner (Optional): </label>
+                        {{ form.requirements }}
+                    </div>
+
+                </div>
+
+                <div class="partnerinfo-button">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+                
+            </form>
+
+        </div>
+
+    </div>
+    
+
+</main>
+
+{% endblock %}

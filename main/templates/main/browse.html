@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<div class="browse-main-container">
+    <div class="browse-text">
+        <h3>It's highly recomended to create Profile so that our model can find a best fit match for you.</h3>
+        <div class="browse-button">
+            <a href="{% url 'main:userinfo' %}">
+                <button class="btn btn-primary">Setup Your Profile</button>
+            </a>
+        </div>
+
+        <div class="browse-skip-sec">
+
+            <h3>________<span>Directly Browse</span>_______</h3>
+
+
+        </div>
+
+        <div class="done-page-buttons">
+            <a href="{% url 'main:browseWomen' %}" target="_blank">
+                <button class="btn btn-primary">👩Browse Women</button>
+            </a>
+
+            <a href="{% url 'main:browseMen' %}" target="_blank">
+                <button class="btn btn-primary">👨Browse Men</button>
+            </a>
+            
+            
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

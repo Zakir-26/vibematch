@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+<main>
+    <div id="main">
+        <div id="text-section">
+            <h2>VibeMatch.</h2>
+            <p>Find the Love You <br> Were <span class="meant-for">Meant For</span>.</p>
+
+            <div id="home-buttons">
+
+                <a href="{% url 'main:userinfo' %}">
+                    <button class="btn btn-primary">❤️ Find My Match</button>
+                </a>
+                <a href="{% url 'main:about' %}">
+                    <button class="btn btn-primary">Learn More</button>
+                </a>
+
+
+            </div>
+
+            {% if request.user.is_authenticated %}
+
+            <div id="home-sep-button">
+                <a href="{% url 'main:browse' %}">
+                    <button class="btn btn-primary">Skip Profile Creation and Browse Partner</button>
+                </a>
+            </div>
+
+            {% endif %}
+
+            
+        </div>
+        <div id="img-section">
+            <div id="home-img">
+                <img src="{% static 'main/images/home1.jpg' %}" alt="Romantic-Image" />
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div id="main2">
+        <div id="couple-cartoon-icon">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <span>15,000+ <br>Happy Couples</span>       
+        </div>
+        <div id="world">
+            <i class="fa-solid fa-globe"></i>
+            <span>44+ Countries</span>
+        </div>
+        <div id="user-verified">
+            <i class="fa-solid fa-user-check"></i>
+            <span>Verified Users</span>
+        </div>
+        <div id="safe-con">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Safe Connections</span>
+            
+        </div>
+    </div>
+
+    <div id="main3">
+        <div id="main3-heading">
+            <h3>How it Works</h3>
+            <p>Finding the Right Person, Not Just a Person</p>
+        </div>
+        <div id="main3-icons">
+
+            <div id="profile">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Create your Profile</span>
+            </div>
+            <div id="partner-prefrences">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <span>Set your Partner Prefrences</span>
+            </div>
+            <div id="AI-match">
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                <span>Let AI find your Match</span>
+            </div>
+            <div id="chatting">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Connect with Confidence</span>
+            </div>
+        </div>
+    </div>
+    <div id="main4">
+        <div id="main4-heading">
+            <h3>Why Choose VibeMatch?</h3>
+        </div>
+        <div id="main4-icons">
+            <div id="verified-icon">
+                <i class="fa-solid fa-certificate" style="color: rgb(16, 87, 222);"></i>
+                <p>Verified Members</p>
+                <span>All Profiles are verified for your safety.</span>
+            </div>
+            <div id="heart">
+                <i class="fa-solid fa-heart" style="color: rgb(16, 87, 222);"></i>
+                <p>Smart Matching</p>
+                <span>Our Algorithm will connect you to compatable matches</span>
+            </div>
+            <div id="message">
+                <i class="fa-regular fa-message fa-width-auto" style="color: rgb(16, 87, 222);"></i>
+                <p>Secure Messaging</p>
+                <span>You can chat on our encrypted messaging platform which is 100% secure.</span>
+            </div>
+            <div id="privacy">
+                <i class="fa-solid fa-shield-halved fa-width-auto" style="color: rgb(16, 87, 222);"></i>
+                <p>Privacy First</p>
+                <span>Your data is 100% secure. We didn't share your personal data with any third parties.</span>
+            </div>
+        </div>
+    </div>
+    <div id="main5">
+        <div id="main5-text-section">
+            <h4>❤️ Success Stories ❤️</h4>
+            <h2>Real People, Real Connections</h2>
+            <p>Thousands of people found love on VibeMatch. Here are some of their stories.</p>
+        </div>
+        <div id="card-container">
+            <div class="cards" id="card1">
+                <img src="{% static 'main/images/success1.png' %}" alt="couple"/>
+                <h3>Ananya & Rohan</h3>
+                <span class="location"><i class="fa-solid fa-location-dot" style="color: rgb(16, 136, 222);"></i>  Mumbai, India</span>
+                <p>"VibeMatch made it so easy to find someone who truly understands me. We are so greatful everyday!"</p>
+                <span class="time-lapse">❤️ Together for 10 months</span>
+
+            </div>
+            <div class="cards" id="card2">
+                <img src="{% static 'main/images/success3.png' %}" alt="couple"/>
+                <h3>John & Sophia</h3>
+                <span class="location"><i class="fa-solid fa-location-dot" style="color: rgb(16, 136, 222);"></i>  Dayton, USA</span>
+                <p>"The AI matching on VibeMatch is incredible. I felt like it knew exactly what I'm looking for."</p>
+                <span class="time-lapse">❤️ Engaged</span>
+
+            </div>
+            <div class="cards" id="card3">
+                <img src="{% static 'main/images/success4.png' %}" alt="couple"/>
+                <h3>Daniel & Lucia</h3>
+                <span class="location"><i class="fa-solid fa-location-dot" style="color: rgb(16, 136, 222);"></i>  Toledo, Spain</span>
+                <p>"We connected, we talked, we fell in love. VibeMatch is where our story began."</p>
+                <span class="time-lapse">❤️ Together for 6 months</span>
+
+            </div>
+            <div class="cards" id="card4">
+                <img src="{% static 'main/images/success5.png' %}" alt="couple"/>
+                <h3>Haris & Saniya</h3>
+                <span class="location"><i class="fa-solid fa-location-dot" style="color: rgb(16, 136, 222);"></i>  Peshawar, Pakistan</span>
+                <p>"From a simple Hi to life time together. Thank you, VibeMatch."</p>
+                <span class="time-lapse">❤️ Married last month</span>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

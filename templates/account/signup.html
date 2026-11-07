@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load i18n allauth %}
+
+{% block body %}
+
+<div class="signup-main-div">
+
+    <h1>Sign Up</h1>
+
+    <div class="signup-line">
+        <hr>
+    </div>
+
+    <p class="signup-main-para">
+        Already have an account? Then Please
+        <a href="{% url 'account_login' %}">Sign In</a>
+    </p>
+
+    <div class="signup-form-div">
+        <form method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
+
+            <div class="signup-errors">
+                {{ form.non_field_errors }}
+
+                {{ form.username.errors }}
+
+                {{ form.email.errors }}
+
+                {{ form.password1.errors }}
+            </div>
+
+            
+
+
+            <p>
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </p>
+
+            <p>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </p>
+
+            <p>
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </p>
+
+
+            {{ redirect_field }}
+
+            <button type="submit">
+                Sign Up
+            </button>
+        </form>
+    </div>
+
+    <div class="signup-line">
+        <hr>
+    </div>
+
+
+    <div class="socialaccount">
+        <h4>Or use third-party</h4>
+        <a href="{% provider_login_url 'google' %}">
+            <button class="social-login-button">
+                <i class="fa-brands fa-google"></i> Continue with Google
+            </button>
+            
+        </a>
+        
+    </div>
+
+    
+
+</div>
+
+{% endblock %}

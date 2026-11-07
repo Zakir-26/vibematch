@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block body %}
+
+<div class="browse-men-container">
+    <div class="search-bar-container">
+        <input type="text" class="form-control search-input" id="browse-user" placeholder="Search...">
+    </div>
+
+    <div class="men-list">
+        {% for user in women %}
+
+            <div class="men-card">
+
+                <div class="men-list-1">
+
+                    <div class="men-profile-picture">
+                        <img src="{{ user.profile_picture.url }}" alt="{{ user.name }}">
+                    </div>
+
+                    <div class="men-name">
+                        {{ user.name }}
+                    </div>
+
+                    <div class="men-age">
+                        {{ user.age }}
+                    </div>
+
+                    <div class="men-address">
+                        {{ user.city }}, {{ user.country }}
+                    </div>
+
+                    <div class="men-profile-link">
+                        <a href="{% url 'core:profile' user.user.username %}">
+                            View Profile
+                        </a>
+                    </div>
+                    
+                </div>
+
+                <div class="men-list-2">
+                    <div class="chat-button">
+
+                        <a href="{% url 'chat' user.user.id %}">
+                            <button class="btn btn-primary">💬Chat</button>
+                        </a>
+
+                    </div>
+
+                    <div class="flirt-button">
+
+                        <a href="{% url 'flirt' user.user.id %}">
+                            <button class="btn btn-primary">😉Flirt</button>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            
+        {% endfor %}
+
+    </div>
+
+    <div id="no-user-found" style="padding: 45px 40px; display: none; ">
+        <h1 style="color: crimson; font-size: 36px;">
+            No Users Found 
+        </h1>
+    </div>
+</div>
+
+<script>
+
+let profiles = document.querySelectorAll(".men-card");
+
+let searchInput = document.getElementById('browse-user');
+let noUser = document.getElementById('no-user-found');
+
+searchInput.addEventListener("input", function() {
+    let searchValue = this.value.toLowerCase().trim();
+    let foundUsers = 0;
+    profiles.forEach(function(profile) {
+
+        const profileText = profile.textContent.toLowerCase();
+
+        if (profileText.includes(searchValue)) {
+            profile.style.display = "";
+            foundUsers++;
+        } else {
+            profile.style.display = "none";
+        }
+
+    });
+
+    if(foundUsers === 0) {
+        noUser.style.display = "block";
+
+    }
+    else {
+        noUser.style.display = "none"
+
+    }
+});
+</script>
+
+
+{% endblock %}

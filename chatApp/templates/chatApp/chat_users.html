@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="chat_users-container">
+    {% for user in users %}
+
+        <div class="chat-user">
+            <a href="{% url 'chat' user.id %}">
+                {{ user.username }}
+            </a>
+        </div>
+
+    {% empty %}
+
+        <p>You haven't chatted with anyone yet.</p>
+
+    {% endfor %}
+
+
+</div>
+
+{% endblock %}

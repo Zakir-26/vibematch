@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+{% if not user_exists %}
+
+<div class="user-not-exists">
+
+    <h2>User does not exist</h2>
+    <p> {{ username }} is not a registered user</p>
+
+</div>
+
+
+{% elif profile %}
+    <main class="profile-main">
+        <div class="profile-main-div">
+            <div class="profile-col1">
+                <div class="profile-image">
+                    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture">
+                </div>
+                <div class="profile-user-name">
+                    <h3> {{ profile.name }} [ {{ profile.age }} ] </h3>
+                </div>
+
+                <div class="profile-bio">
+                    {% if profile.bio %}
+                        <p class="profile-bio-user"> {{ profile.bio }} </p>
+                    {% else %}
+                        <h3 class="profile-bio-user"> Looking for an Ideal Partner </h3>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="profile-col2">
+
+                <div class="user-profile-links">
+
+                    <nav class="profile-nav-items">
+                        <a href="mailto: {{ profile.user.email }}" target="_blank">
+                            <div class="profile-page-icon">
+                                <i class="fa-regular fa-envelope" style="color: #000000;"></i>
+                            </div>
+                            <div class="profile-page-icon-text">
+                                Email
+                            </div>
+                        </a>
+                        
+                        <a href="{% url 'chat' profile.user.id %}">
+                            <div class="profile-page-icon">
+                                <i class="fa-regular fa-message" style="color: #000000"></i>
+                            </div>
+                            <div class="profile-page-icon-text">
+                                Chat
+                            </div>
+                        </a>
+
+                        <a href="{% url 'flirt' profile.user.id %}">
+                            <div class="profile-page-icon">
+                                <i class="fa-regular fa-face-smile-wink" style="color: #000000;"></i>
+                            </div>
+                            <div class="profile-page-icon-text">
+                                Flirt
+                            </div>
+                        </a>
+
+                    </nav>
+                </div>
+        
+            </div>
+
+            
+        </div>
+
+        <div class="profile-about-user">
+            <h2>More About {{ profile.name }} </h2>
+            <div class="profile-location">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Lives in <span>{{ profile.city }}, {{ profile.country }}  </span> </p>
+            </div>
+
+            <div class="profile-profession">
+                <i class="fa-solid fa-briefcase"></i>
+                <p>Profession <span>{{ profile.profession }}</span> </p>
+            </div>
+
+            <div class="profile-personality">
+                <i class="fa-solid fa-person-cane"></i>
+                <p>Personality 
+                    <span>
+                        {% if profile.personality == "I" %}
+                            Introvert 
+                            {% elif profile.personality == "E" %}
+                                Extrovert
+
+                            {% else %}
+                                Ambivert
+
+                        {% endif %}
+                    </span> </p>
+            </div>
+
+            <div class="profile-qualification">
+                <i class="fa-solid fa-user-graduate"></i>
+                <p>Education <span>{{ profile.qualification }}</span> </p>
+            </div>
+
+            <div class="profile-height">
+                <i class="fa-solid fa-up-down"></i>
+                <p>Height <span>{{ profile.height }}cm</span> </p>
+            </div>
+
+            <div class="profile-looking-for">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <p>Looking For <span>
+                        {% if profile.looking_for == "F" %}
+                            Female
+                            {% elif profile.looking_for == "M" %}
+                                Male
+
+                            {% else %}
+                                Any one
+
+                        {% endif %}
+                    </span></p>
+            </div>
+        </div>
+    </main>
+
+{% else %}
+
+    <div class="profile-not-created">
+        <h2>Profile not yet created</h2>
+        <p> {{ username }} has not created a profile yet. </p>
+    </div>
+
+{% endif %}
+
+{% endblock %}

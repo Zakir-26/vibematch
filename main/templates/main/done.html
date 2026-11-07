@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<main class="done-page-main">
+
+    <div class="done-page-div">
+        <div class="done-page-heading">
+            <h1><span>🎉</span>You're all Set!❤️</h1>
+        </div>
+
+        <div class="done-page-subheading">
+
+            <h3>We've received your profile and are searching for compatible matches.<br> We'll notify you as soon as we find someone who matches your preferences.</h3>
+
+        </div>
+
+        <div class="sub-text-div">
+            <div class="sub-subheading">
+                <h3>Don't want to wait?</h3>
+                <h4>Start exploring profiles right away.</h4>
+            </div>
+        </div>
+
+        <div class="done-page-buttons">
+            <a href="{% url 'main:browseWomen' %}" target="_blank">
+                <button class="btn btn-primary">👩Explore Women</button>
+            </a>
+
+            <a href="{% url 'main:browseMen' %}" target="_blank">
+                <button class="btn btn-primary">👨Explore Men</button>
+            </a>
+            
+            
+        </div>
+
+        
+
+    </div>
+
+    
+</main>
+
+{% endblock %}
